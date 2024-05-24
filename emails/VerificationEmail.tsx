@@ -6,6 +6,7 @@ import {Html, Head, Font, Preview, Heading, Row, Section, Text, Button} from '@r
   }
   
   export default function VerificationEmail({ username, otp }: VerificationEmailProps) {
+    console.log(username, otp)
     return (
       <Html lang="en" dir="ltr">
         <Head>
