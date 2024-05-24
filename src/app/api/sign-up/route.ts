@@ -3,9 +3,22 @@ import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
 
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
-import { send } from "process";
 
-export async function Postcss(request: Request) {
+export async function POST(request: Request) {
+  // ckeck the method
+  // if (request.method !== "POST") {
+  //   return Response.json(
+  //     {
+  //       success: false,
+  //       message: "Method not allowed",
+  //     },
+  //     {
+  //       status: 405,
+  //     }
+  //   );
+  // }
+
+  // check database 
   await dbConnect();
 
   try {
@@ -17,28 +30,28 @@ export async function Postcss(request: Request) {
     });
 
     if (existingUserVerifiedByUsername) {
-      return Response.json(
-        {
+      return new Response(
+        JSON.stringify({
           success: false,
           message: "Username is already taken",
-        },
+        }),
         {
           status: 400,
         }
       );
     }
 
-    const existingUserByEmail = await UserModel.findOne(email);
+    const existingUserByEmail = await UserModel.findOne({ email });
 
     const verifyCode = Math.floor(100000 + Math.random() * 900000).toString();
 
     if (existingUserByEmail) {
       if (existingUserByEmail.isVerified) {
-        return Response.json(
-          {
+        return new Response(
+          JSON.stringify({
             success: false,
-            message: "User already exist with this email.",
-          },
+            message: "User already exists with this email.",
+          }),
           {
             status: 400,
           }
@@ -71,7 +84,7 @@ export async function Postcss(request: Request) {
       await newUser.save();
     }
 
-    //send verigication email
+    // Send verification email
     const emailResponse = await sendVerificationEmail(
       email,
       username,
@@ -79,31 +92,31 @@ export async function Postcss(request: Request) {
     );
 
     if (!emailResponse.success) {
-      return Response.json(
-        {
+      return new Response(
+        JSON.stringify({
           success: false,
           message: emailResponse.message,
-        },
+        }),
         {
           status: 500,
         }
       );
     }
 
-    return Response.json(
-      {
+    return new Response(
+      JSON.stringify({
         success: true,
         message: "User registered successfully. Please verify your email.",
-      },
-      { status: 500 }
+      }),
+      { status: 200 }
     );
   } catch (error) {
     console.error("Error registering user", error);
-    return Response.json(
-      {
+    return new Response(
+      JSON.stringify({
         success: false,
-        message: "Error resistering user",
-      },
+        message: "Error registering user",
+      }),
       {
         status: 500,
       }
