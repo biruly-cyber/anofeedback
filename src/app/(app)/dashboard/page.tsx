@@ -26,6 +26,7 @@ const Dashboard = () => {
 
   const { data: session } = useSession();
 
+
   const form = useForm({
     resolver: zodResolver(accpetMessageSchema),
   });
@@ -113,11 +114,12 @@ const Dashboard = () => {
     }
   };
 
-  const { username } = session?.user as User;
+  const  username  = session?.user.username as User;
 
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
 
   const profileUrl = `${baseUrl}/u/${username}`;
+
 
   const copyToclipBoard = () => {
     navigator.clipboard.writeText(profileUrl);
@@ -127,7 +129,7 @@ const Dashboard = () => {
     });
   };
 
-  if (!session || !!session.user) {
+  if (!session || !session.user) {
     return <div>Please login</div>;
   }
 

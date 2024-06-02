@@ -1,0 +1,54 @@
+{
+  "messages": [
+    {
+      "title": "Message from MysteryGuest",
+      "content": "Do you want any book recommendations?",
+      "received": "1 day ago"
+    },
+    {
+      "title": "Reminder from HealthCoach",
+      "content": "It's time for your daily workout!",
+      "received": "2 hours ago"
+    },
+    {
+      "title": "Promotion from BookStore",
+      "content": "Get 20% off on all books this weekend!",
+      "received": "3 days ago"
+    },
+    {
+      "title": "Update from NewsFeed",
+      "content": "Today's top story: New advancements in AI technology.",
+      "received": "4 hours ago"
+    },
+    {
+      "title": "Alert from WeatherApp",
+      "content": "Severe thunderstorm warning in your area.",
+      "received": "30 minutes ago"
+    },
+    {
+      "title": "Offer from TravelBuddy",
+      "content": "Exclusive deal: 50% off on your next flight booking!",
+      "received": "6 hours ago"
+    },
+    {
+      "title": "Message from Friend",
+      "content": "Hey, are you free this weekend?",
+      "received": "2 days ago"
+    },
+    {
+      "title": "Notification from SocialMedia",
+      "content": "You have 5 new friend requests.",
+      "received": "10 minutes ago"
+    },
+    {
+      "title": "Reminder from Doctor",
+      "content": "Don't forget your appointment tomorrow at 10 AM.",
+      "received": "1 hour ago"
+    },
+    {
+      "title": "Message from TechSupport",
+      "content": "Your issue has been resolved. Please check your email for details.",
+      "received": "5 hours ago"
+    }
+  ]
+}
